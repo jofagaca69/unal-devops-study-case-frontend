@@ -1,0 +1,17 @@
+name: CI/CD Healthcare Frontend Project
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GKE_CLUSTER_NAME: autopilot-cluster-1
+  GKE_CLUSTER_ZONE: us-central1
+  IMAGE_NAME: healthcare-backend
+  IMAGE_TAG: ${{ github.sha }}
+  GCR_HOSTNAME: us-central1-artifactregistry.pkg.dev
+
