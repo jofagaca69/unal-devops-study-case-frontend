@@ -8,6 +8,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }} # Optional, if you want to store project ID as a secret
   GKE_CLUSTER: cluster-2 # Your GKE cluster name
+  GKE_REGION: us-central1 # Your GKE cluster name
   GKE_NAMESPACE: default # Namespace where your Angular app will be deployed
   AR_REGION: us-central1 # Artifact Registry region
   AR_REPO_NAME: healthcare-frontend # Your Artifact Registry repository name
@@ -57,7 +58,7 @@ jobs:
 
       - name: Get GKE credentials
         run: |
-          gcloud container clusters get-credentials ${GKE_CLUSTER} --project ${PROJECT_ID}
+          gcloud container clusters get-credentials ${GKE_CLUSTER} --region ${GKE_REGION} --project ${PROJECT_ID}
 
       - name: Deploy to GKE
         run: |
