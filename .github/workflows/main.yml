@@ -68,12 +68,15 @@ jobs:
 
       - name: Install Angular CLI (if needed for build)
         run: npm install -g @angular/cli@latest # Or your specific Angular CLI version
+        working-directory: ./app
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./app
 
       - name: Build Angular application
         run: npm run build -- --configuration=production # Adjust if you have a custom build script
+        working-directory: ./app
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
