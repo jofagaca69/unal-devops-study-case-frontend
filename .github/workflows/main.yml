@@ -15,6 +15,45 @@ env:
   IMAGE_NAME: app # Name for your Docker image
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Node.js dependencies
+        run: npm install
+        working-directory: ./app
+
+      - name: Run ESLint
+        run: npm run lint
+        working-directory: ./app
+
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Node.js dependencies
+        run: npm install
+        working-directory: ./app
+
+      - name: Run tests
+        run: npm test -- --watch=false --browsers=ChromeHeadless
+        working-directory: ./app
+
   build-and-deploy:
     runs-on: ubuntu-latest # Runner environment
 
