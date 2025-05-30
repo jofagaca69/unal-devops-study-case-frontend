@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7d8938a2-4714-4271-9d0a-c6fd298c59aa" name="Changes" comment="Fix: Ajustes en lógica">
       <change beforePath="$PROJECT_DIR$/.github/workflows/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +104,7 @@
       <workItem from="1748317929073" duration="78000" />
       <workItem from="1748318013835" duration="5608000" />
       <workItem from="1748404503933" duration="3839000" />
-      <workItem from="1748568562304" duration="1639000" />
+      <workItem from="1748568562304" duration="2426000" />
     </task>
     <task id="LOCAL-00001" summary="Instalación de tailwindscss y creación de componente de login">
       <option name="closed" value="true" />
@@ -217,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748570118251</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fix: Ajustes en lógica">
+      <option name="closed" value="true" />
+      <created>1748570458143</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1748570458143</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

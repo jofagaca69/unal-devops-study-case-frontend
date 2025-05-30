@@ -89,7 +89,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${AR_REGION}-docker.pkg.dev/${PROJECT_ID}/${AR_REPO_NAME}/${IMAGE_NAME}:${{ github.sha }} .
+          docker build -t ${AR_REGION}-docker.pkg.dev/${PROJECT_ID}/${AR_REPO_NAME}/${IMAGE_NAME}:${{ github.sha }} ./app
           docker push ${AR_REGION}-docker.pkg.dev/${PROJECT_ID}/${AR_REPO_NAME}/${IMAGE_NAME}:${{ github.sha }}
         id: docker_build_and_push # Give this step an ID to reference its outputs (optional)
 
