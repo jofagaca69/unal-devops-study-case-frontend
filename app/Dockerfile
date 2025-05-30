@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-COPY . .
+COPY .. .
 
 # Build for production
 # Consider passing environment variables at build time if needed
