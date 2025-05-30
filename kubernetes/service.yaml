@@ -1,0 +1,15 @@
+# kubernetes/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-frontend-service
+  labels:
+    app: angular-frontend
+spec:
+  type: LoadBalancer # Exposes the service externally
+  selector:
+    app: angular-frontend # Selects pods with this label
+  ports:
+    - protocol: TCP
+      port: 80 # The port your service will listen on (external)
+      targetPort: 80 # The port on your pods (containerPort)

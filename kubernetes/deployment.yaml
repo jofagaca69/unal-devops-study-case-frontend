@@ -1,0 +1,41 @@
+# kubernetes/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-frontend
+  labels:
+    app: angular-frontend
+spec:
+  replicas: 2 # Number of pods for your Angular app
+  selector:
+    matchLabels:
+      app: angular-frontend
+  template:
+    metadata:
+      labels:
+        app: angular-frontend
+    spec:
+      containers:
+        - name: angular-frontend-container
+          image: ${_IMAGE} # This will be replaced by gke-deploy
+          ports:
+            - containerPort: 80 # Nginx default port
+          livenessProbe: # Optional: Health check
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe: # Optional: Readiness check
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources: # Optional: Resource limits
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
