@@ -117,6 +117,9 @@ jobs:
           # Replace the placeholder in deployment.yaml
           sed -i "s|image: \${_IMAGE}|image: ${IMAGE_TAG}|g" kubernetes/deployment.yaml
 
+          # Restart
+          kubectl delete deployment angular-frontend -n default --ignore-not-found
+
           # Apply the Kubernetes manifests
           kubectl apply -f kubernetes/
         id: deploy_to_gke

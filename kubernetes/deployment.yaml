@@ -6,7 +6,7 @@ metadata:
   labels:
     app: angular-frontend
 spec:
-  replicas: 2 # Number of pods for your Angular app
+  replicas: 1
   selector:
     matchLabels:
       app: angular-frontend
