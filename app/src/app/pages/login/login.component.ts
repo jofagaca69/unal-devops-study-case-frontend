@@ -26,7 +26,6 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    //
     const { email, password } = this.loginForm.value;
     this.authService.login(email!, password!).subscribe({
       next: (result: any) => {
