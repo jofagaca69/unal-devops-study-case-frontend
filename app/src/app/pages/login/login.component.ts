@@ -30,8 +30,10 @@ export class LoginComponent {
     this.authService.login(email!, password!).subscribe({
       next: (result: any) => {
         this.errorMsg = '';
-        if (result.status === 401) {
+        if (result.success) {
           this.router.navigate(['/dashboard']);
+        } else {
+          this.errorMsg = result.message;
         }
       },
       error: (error) => {
