@@ -40,7 +40,7 @@ export class LoginComponent {
         }
       },
       error: (error) => {
-        if (error.error?.Message) {
+        if (error.error?.message) {
           this.errorMsg = error.error.message;
           return;
         }
