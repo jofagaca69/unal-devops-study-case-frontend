@@ -5,13 +5,14 @@ WORKDIR /app
 
 COPY package*.json ./
 RUN npm install
+RUN npm i --save-dev @types/node
 
 COPY .. .
 
 # Build for production
 # Consider passing environment variables at build time if needed
 # e.g., ng build --configuration=production --base-href=/
-RUN npm run build -- --configuration=production
+RUN npm run build --configuration=production
 
 # Stage 2: Serve the Angular application with Nginx
 FROM nginx:alpine as production-stage
