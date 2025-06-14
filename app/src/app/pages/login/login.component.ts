@@ -38,6 +38,7 @@ export class LoginComponent {
         }
       },
       error: (error) => {
+        console.log({ error });
         this.errorMsg = error.message;
       },
     });
