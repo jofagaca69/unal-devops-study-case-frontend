@@ -49,6 +49,10 @@ export class SignUpComponent {
           }
         },
         error: (error) => {
+          if (error.error?.Message) {
+            this.errorMsg = error.error.message;
+            return;
+          }
           this.errorMsg = error.message;
         },
       });

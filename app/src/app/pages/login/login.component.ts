@@ -1,3 +1,4 @@
+import { Message } from './../../../../node_modules/@angular-eslint/bundled-angular-compiler/dist/index.d';
 import { Component } from '@angular/core';
 import { JsonPipe, NgIf, NgOptimizedImage } from '@angular/common';
 import {
@@ -39,7 +40,10 @@ export class LoginComponent {
         }
       },
       error: (error) => {
-        console.log({ error });
+        if (error.error?.Message) {
+          this.errorMsg = error.error.message;
+          return;
+        }
         this.errorMsg = error.message;
       },
     });
