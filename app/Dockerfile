@@ -5,9 +5,9 @@ WORKDIR /app
 
 COPY package*.json ./
 RUN npm install
-RUN npm i --save-dev @types/node
+RUN npm install --save-dev @types/node
 
-COPY .. .
+COPY . .
 
 # Build for production
 # Consider passing environment variables at build time if needed
