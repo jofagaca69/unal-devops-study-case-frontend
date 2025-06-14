@@ -1,0 +1,86 @@
+<img
+  ngSrc="assets/green-gradient.jpg"
+  alt="Placeholder Image"
+  class="absolute object-cover w-full h-full -z-10"
+  width="400"
+  height="200"
+  priority
+/>
+<div class="container mx-auto px-4 py-8 bg-gray-100 flex flex-col items-center">
+  <div class="flex justify-center mb-8">
+    <img
+    ngSrc="assets/SalusLogo.png"
+    width="400"
+    height="200"
+    priority
+    class="z-10  rounded p-4"
+  />
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">Dashboard de Usuarios</h1>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="flex justify-center items-center py-8">
+    <div
+      class="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500"
+    ></div>
+  </div>
+
+  <!-- Error State -->
+  <div
+    *ngIf="error"
+    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+    role="alert"
+  >
+    <span class="block sm:inline">{{ error }}</span>
+  </div>
+
+  <!-- Users Table -->
+  <div
+    *ngIf="!loading && !error"
+    class="bg-white shadow-md rounded-lg overflow-hidden"
+  >
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Nombre
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Apellido
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Email
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let user of users" class="hover:bg-gray-50">
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+            {{ user.name }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+            {{ user.namelastname }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+            {{ user.email }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Empty State -->
+  <div
+    *ngIf="!loading && !error && users.length === 0"
+    class="text-center py-8"
+  >
+    <p class="text-gray-500">No hay usuarios registrados</p>
+  </div>
+</div>

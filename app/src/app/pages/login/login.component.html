@@ -31,6 +31,11 @@
         <input type="checkbox" id="remember" name="remember" class="text-red-500">
         <label for="remember" class="text-green-900 ml-2">Remember Me</label>
       </div>
+
+      <div class="bg-red-300 my-4 rounded border border-red-600 py-2 px-4" *ngIf="errorMsg">
+        {{errorMsg |json}}
+      </div>
+
       <!-- Login Button -->
       <button type="submit" class="bg-[#227027] disabled:bg-gray-500 hover:bg-[#015a06] text-white font-semibold rounded-md py-2 px-4 w-full"
         [disabled]="!loginForm.valid" (click)="login()">

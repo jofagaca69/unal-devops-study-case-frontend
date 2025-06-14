@@ -13,6 +13,7 @@ env:
   AR_REGION: us-central1 # Artifact Registry region
   AR_REPO_NAME: healthcare-frontend # Your Artifact Registry repository name
   IMAGE_NAME: app # Name for your Docker image
+  API_GATEWAY_URL: ${{ secrets.API_GATEWAY_URL }} # URL del API Gateway
 
 jobs:
   lint:
@@ -77,6 +78,8 @@ jobs:
       - name: Build Angular application
         run: npm run build -- --configuration=production # Adjust if you have a custom build script
         working-directory: ./app
+        env:
+          API_GATEWAY_URL: ${{ secrets.API_GATEWAY_URL }}
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
