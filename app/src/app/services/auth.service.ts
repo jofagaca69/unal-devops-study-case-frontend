@@ -7,7 +7,7 @@ import { environment } from '@environments/environment';
 })
 export class AuthService {
   private readonly http = inject(HttpClient);
-  private readonly BASE_URL = `${environment.apiUrl}/auth`;
+  private readonly BASE_URL = `${environment.apiUrl}`;
 
   constructor() { }
 
