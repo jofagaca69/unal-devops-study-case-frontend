@@ -30,7 +30,6 @@ export class LoginComponent {
     const { email, password } = this.loginForm.value;
     this.authService.login(email!, password!).subscribe({
       next: (result: any) => {
-        console.log({ result });
         this.errorMsg = '';
         if (result.success) {
           localStorage.setItem('name', result.user.first_name);

@@ -43,6 +43,7 @@ export class SignUpComponent {
         next: (result: any) => {
           this.errorMsg = '';
           if (result.success) {
+            localStorage.setItem('name', values.name);
             this.router.navigate(['/dashboard']);
           } else {
             this.errorMsg = result.message;
