@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://35.209.18.19:8080'
+  apiUrl: 'https://api-gateway-989577762253.us-central1.run.app'
 };
