@@ -7,7 +7,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }} # Optional, if you want to store project ID as a secret
-  GKE_CLUSTER: cluster-2 # Your GKE cluster name
+  GKE_CLUSTER: cluster-1 # Your GKE cluster name
   GKE_REGION: us-central1-a # Your GKE cluster name
   GKE_NAMESPACE: default # Namespace where your Angular app will be deployed
   AR_REGION: us-central1 # Artifact Registry region
