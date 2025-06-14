@@ -1,30 +1,64 @@
 import { Component } from '@angular/core';
-import {NgOptimizedImage} from '@angular/common';
-import {AuthService} from '../../services/auth.service';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [
-    NgOptimizedImage,
-    ReactiveFormsModule
-  ],
+  imports: [NgOptimizedImage, ReactiveFormsModule, CommonModule],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.scss'
+  styleUrl: './sign-up.component.scss',
 })
 export class SignUpComponent {
-
   signUpForm = new FormGroup({
     name: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required),
+    birthDate: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-  })
+  });
+  errorMsg = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   signUp() {
-    const body: any = this.signUpForm.value;
-    this.authService.signup(body).subscribe();
+    const values: any = this.signUpForm.value;
+    this.authService
+      .signup({
+        email: values.email,
+        first_name: values.name,
+        last_name: values.lastname,
+        phone: values.phone,
+        birth_date: this.getBirthDate(values.birthDate),
+        password: values.password,
+      })
+      .subscribe({
+        next: (result: any) => {
+          this.errorMsg = '';
+          if (result.success) {
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.errorMsg = result.message;
+          }
+        },
+        error: (error) => {
+          this.errorMsg = error.message;
+        },
+      });
+  }
+
+  private getBirthDate(birthDate: any) {
+    const date = new Date(birthDate);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
   }
 }

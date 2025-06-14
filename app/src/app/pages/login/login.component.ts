@@ -31,13 +31,14 @@ export class LoginComponent {
       next: (result: any) => {
         this.errorMsg = '';
         if (result.success) {
+          localStorage.setItem('name', result.user.first_name);
           this.router.navigate(['/dashboard']);
         } else {
           this.errorMsg = result.message;
         }
       },
       error: (error) => {
-        this.errorMsg = error.error;
+        this.errorMsg = error.message;
       },
     });
   }
